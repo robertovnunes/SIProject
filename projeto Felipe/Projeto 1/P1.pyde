@@ -48,12 +48,15 @@ def drawTerrain():
 
 def getColor (x,y):
     v = noise(x * scl, y * scl)
-    if v < 0.3:
-        #d1
+    if v < 0.25:
+        #azul
         return color(155, 255, 255)
-    elif v < 0.6:
-        #d2
+    elif v < 0.5:
+        #laranja
         return color(30, 255, 255)
-    else:
-        #d3
+    elif v < 0.9:
+        #verde
         return color(66, 255, 255)
+    else:
+        #preto
+        return color(0, 0, 0)
