@@ -8,9 +8,6 @@ class Celula():
                 self.w = w
                 self.h = h
                 self.custo = c
-        def getCelulas(self, no):
-            return Celula
-        def f
 
 class Terreno(Celula):
     
@@ -25,36 +22,28 @@ class Terreno(Celula):
 
         
                     
-    def  Vizinhos(self, no):
-            result = []
-            dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-            for dir in dirs:
-                neighbor = [no.Celula.x + dir[0], no.Celula.y + dir[1]]
-                if neighbor in self.mapa:
-                    result.append(neighbor)
-            return result              
-    
+
     
     def drawTerrain(self):
         for i in range (width/tileSize):
             
             for j in range (height/tileSize):
-                vizinhos = self.Vizinhos(self.mapa[i][j])
+                #vizinhos = self.Vizinhos(self.mapa[i][j])
                 sp = self.getColor(i, j)
                 fill(sp[0])
                 rect(i * tileSize, j * tileSize, tileSize, tileSize)
                 if sp[1] < 0.3:
                     #verde: grama com custo 0
-                    self.mapa[i][j].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 0, vizinhos))
+                    self.mapa[i][j].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 0))
                 elif sp[1] < 0.5:
                     #laranja: areia com custo 1
-                    self.mapa[i][j].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 1, vizinhos))
+                    self.mapa[i][j].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 1))
                 elif sp[1] < 0.7:
                     #azul: agua com custo 2
-                    self.mapa[i].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 2, vizinhos))
+                    self.mapa[i].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 2))
                 else:
                     #preto
-                    self.mapa[i].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 3, vizinhos))
+                    self.mapa[i].append(Celula(i*tileSize/2,j*tileSize/2,tileSize,tileSize, 3))
 
     
     
