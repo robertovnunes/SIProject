@@ -1,15 +1,26 @@
 tileSize = 20;
-scl = 0.1;
+scl = 3;
 
 class Celula():
-    def __init__(self, x, y, c, Tvizinhos):
+    def __init__(self, x, y, c, tempVizinhos):
         self.x = x
         self.y = y
         self.custo = c
-        self.vizinhos = Tvizinhos
+        self.vizinhos = tempVizinhos
+
     def getValues(self):
         return (self.x, self.y, self.custo, self.vizinhos)
-        
+    
+    def getX(self):
+        return self.x
+    def getY(self):
+        return self.y
+    def getC(self):
+        return self.custo
+    def getVizinhos(self):
+        return self.vizinhos
+    def __str__(self):
+        print(self.x, self.y, self.custo, self.vizinho)
         
 class Terreno():
     
@@ -21,13 +32,16 @@ class Terreno():
                 self.mapa[i].append([])    
 
 
-    def Vizinhos(self, node):
-        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+    def Vizinhos(self, tupla):
+        (x, y) = tupla
         result = []
-        for dir in dirs:
-            neighbor = [node[0] + dir[0], node[1] + dir[1]]
-            if neighbor in self.mapa:
-                result.append(neighbor)
+        
+        neighbor = [(x+1, y), (x-1, y), (x, y+1), (x, y-1)] # E W N S
+        if (x + y) % 2 == 0: neighbor.reverse()
+        for i in neighbor:
+            if i[0] < 0 or i[1] < 0 or i[0] > width/tileSize or i[1] > height/tileSize:
+                neighbor.pop(neighbor.index(i))
+        result.append(neighbor)
         return result
     
     def drawTerrain(self):
@@ -38,29 +52,26 @@ class Terreno():
                 sp = self.getColor(i, j)
                 fill(sp[0])
                 rect(i * tileSize, j * tileSize, tileSize, tileSize)
-                vzns = self.Vizinhos(self.mapa[i][j])
-                print(vzns)
                 if sp[1] < 0.4:
                     #verde: grama com custo 0
+                    vzns = self.Vizinhos((i, j))
                     GCell = Celula(x, y, 0, vzns)
-                    #print(GCell.getValues()[1])
                     self.mapa[i][j].append(GCell.getValues())
                 elif sp[1] < 0.5:
                     #Azul: Agua com custo 2
+                    vzns = self.Vizinhos((i, j))
                     Bcell = Celula(x, y, 2, vzns)
-                    #print(Bcell.getValues())
                     self.mapa[i][j].append(Bcell.getValues())
                 elif sp[1] < 0.6:
                     #laranja: areia com custo 1
-                    #OCell = Celula(x, y, 1, vzns)
-                    print(OCell.getValues())
+                    vzns = self.Vizinhos((i, j))
+                    OCell = Celula(x, y, 1, vzns)
                     self.mapa[i][j].append(OCell.getValues())
                 else:
                     #preto
+                    vzns = self.Vizinhos((i, j))
                     BLcell = Celula(x, y, 3, vzns)
-                    print(BLcell.getValues())
                     self.mapa[i][j].append(BLcell.getValues())
-                #print(self.mapa[i][j])
     
     
     def getColor (self, x, y):
