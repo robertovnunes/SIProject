@@ -1,0 +1,20 @@
+1. O mapa é gerado aleatoriamente com os 4 tipos de terrenos;
+ok
+2. O usuário escolhe qual tipo de busca será executada (a forma de controle fica a critério do grupo);
+parcialmente ok
+3. O agente aparece em uma posição aleatória no ambiente (cuidado para ele não aparecer dentro de um obstáculo);
+parcialmente ok
+4. Uma comida aparece em uma posição aleatória no ambiente (evitar aparecer em um obstáculo);
+parcialmente ok
+5. O agente percebe a comida no ambiente e define a posição da comida como estado objetivo;
+pendente
+6. O agente realiza a busca considerando sua posição atual como o estado inicial;
+pendente
+7. Com o resultado da busca, o agente define um caminho a ser percorrido;
+pendente
+8. O agente se desloca em direção à comida para coletá-la seguindo o caminho resultante da busca.
+pendente
+9. Quando ocorre a colisão entre o agente e a comida, a comida desaparece do ambiente e é contabilizada (a comida foi coletada);
+Ok
+10. Volta para o passo 4 (outra comida aparece no ambiente)
+Ok
