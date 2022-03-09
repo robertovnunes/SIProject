@@ -4,6 +4,7 @@ from Vehicle import Vehicle
 from Food import Food
 from Mapa import Terreno
 from flowField import flowField
+from BFS import *
 
 tileSize = 20;
 scl = 3;
@@ -38,7 +39,7 @@ def draw():
         f.comeu()
 
     v.arrive(f.location())
-    v.follow(flow)
+    #v.follow(flow, )
 
     f.display()        
     v.update()
