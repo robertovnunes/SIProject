@@ -54,8 +54,8 @@ class Vehicle():
 
         self.applyForce(steer)
         
-    def follow(self, flow, target):
-        desired = target-flow.Lookup(self.position)
+    def follow(self, flow):
+        desired = flow.Lookup(self.position)
         self.arrive(desired)
         desired.mult(self.maxspeed)
         steer = desired - self.velocity

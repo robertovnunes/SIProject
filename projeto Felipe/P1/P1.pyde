@@ -38,7 +38,7 @@ def draw():
         f.comeu()
 
     v.arrive(f.location())
-
+    v.follow(flow)
 
     f.display()        
     v.update()

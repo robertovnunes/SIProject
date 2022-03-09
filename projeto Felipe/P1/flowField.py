@@ -22,6 +22,6 @@ class flowField:
             xoff = xoff + 0.1
             
     def Lookup(self, lookup):
-        column = int(constrain(lookup.x/self.resolution,0,self.cols-1))
-        row = int(constrain(lookup.y/self.resolution,0,self.rows-1))
+        column = int(constrain(lookup.x/self.resolution, 0, self.cols-1))
+        row = int(constrain(lookup.y/self.resolution, 0, self.rows-1))
         return self.field[column][row]
