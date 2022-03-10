@@ -5,7 +5,7 @@ class Food():
 
     def __init__(self, x, y):
         self.acceleration = PVector(0, 0)
-        self.posicao = PVector(x*tileSize+10, y*tileSize+10)
+        self.posicao = PVector(x, y)
         self.r = 20
         self.maxspeed = 1.0
         self.maxforce = 0.01
@@ -18,7 +18,7 @@ class Food():
         #self.velocity.add(self.acceleration)
         # Limit speed
         #self.velocity.limit(self.maxspeed)
-        self.posicao = PVector(x*tileSize+10, y*tileSize+10)
+        self.posicao = PVector(x, y)
         # Reset accelerationelertion to 0 each cycle
         #self.acceleration.mult(0)
 
