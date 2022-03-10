@@ -4,7 +4,8 @@ from Vehicle import Vehicle
 from Food import Food
 from Mapa import Terreno
 from flowField import flowField
-from BFS import *
+from BFS import BFS
+from Dijkstra import *
 
 tileSize = 20;
 scl = 3;
@@ -14,6 +15,7 @@ def setup():
     global f
     global mapa
     global flow
+    global path
     size(720, 480)
     noStroke()
     colorMode(HSB)
@@ -30,6 +32,9 @@ def setup():
 def draw():
     #background(200)
     mapa.drawTerrain()
+    if keyPressed:
+        if key == '1':
+            path = BFS(mapa[v.location()[0]][v.location()[1]].vizinhos, mapa[v.location()[0]][v.location()[1]], f.location()) 
     
     if(round(v.location()[0]) == round(f.location()[0]) and round(v.location()[1]) == round(f.location()[1])):
         r1 = random.randint(0, width)

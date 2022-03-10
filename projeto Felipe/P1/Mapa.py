@@ -26,6 +26,7 @@ class Terreno():
     
     def __init__(self):
         self.mapa = []
+        self.walls =[]
         for i in range (width/tileSize):
             self.mapa.append([])
             for j in range (height/tileSize):
@@ -72,7 +73,7 @@ class Terreno():
                     vzns = self.Vizinhos((i, j))
                     BLcell = Celula(x, y, 3, vzns)
                     self.mapa[i][j].append(BLcell.getValues())
-    
+                    self.walls.append(BLcell.getX(), BLcell.getY())
     
     def getColor (self, x, y):
         v = noise(x * scl, y * scl)

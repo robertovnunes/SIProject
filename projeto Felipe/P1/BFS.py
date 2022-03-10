@@ -1,17 +1,52 @@
-def find_path_bfs(s, e, grid):
-    queue = [(s, [])]  # start point, empty path
+from Mapa import Terreno
+import collections
 
-    while len(queue) > 0:
-        node, path = queue.pop(0)
-        path.append(node)
-        mark_visited(node, v)
+class Queue:
+    def __init__(self):
+        self.elements = collections.deque()
+    
+    def empty(self):
+        return not self.elements
+    
+    def put(self, x):
+        self.elements.append(x)
+    
+    def get(self):
+        return self.elements.popleft()
+    
+def BFS(adj_list, start_node, target_node):
+    # Set of visited nodes to prevent loops
+    visited = set()
+    queue = Queue()
 
-        if node == e:
-            return path
+    # Add the start_node to the queue and visited list
+    queue.put(start_node)
+    visited.add(start_node)
+    
+    # start_node has not parents
+    parent = dict()
+    parent[start_node] = None
 
-        adj_nodes = get_neighbors(node, grid)
-        for item in adj_nodes:
-            if not is_visited(item, v):
-                queue.append((item, path[:]))
+    # Perform step 3
+    path_found = False
+    while not queue.empty():
+        current_node = queue.get()
+        if current_node == target_node:
+            path_found = True
+            break
 
-    return None  # no path found
+        for next_node in adj_list[current_node]:
+            if next_node not in visited:
+                queue.put(next_node)
+                parent[next_node] = current_node
+                visited.add(next_node)
+                
+    # Path reconstruction
+    path = []
+    if path_found:
+        path.append(target_node)
+        while parent[target_node] is not None:
+            path.append(parent[target_node]) 
+            target_node = parent[target_node]
+        path.reverse()
+    return path
