@@ -5,7 +5,7 @@ class Food():
     def __init__(self, x, y):
         self.acceleration = PVector(0, 0)
         self.posicao = PVector(x, y)
-        self.r = 6
+        self.r = 20
         self.maxspeed = 1.0
         self.maxforce = 0.01
         self.flag = 0
@@ -42,8 +42,7 @@ class Food():
         # Draw a triangle rotated in the direction of velocity
         #theta = self.velocity.heading()# + PI / 2
         fill(100)
-        stroke(200)
-        strokeWeight(1)
+        noStroke()
         with pushMatrix():
             translate(self.posicao.x, self.posicao.y)
             #rotate(theta)

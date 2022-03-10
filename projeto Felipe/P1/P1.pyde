@@ -20,10 +20,10 @@ def setup():
     noStroke()
     colorMode(HSB)
     
-    r1 = random.randint(0, width)
-    r2 = random.randint(0, height)
-    r3 = random.randint(0, width)
-    r4 = random.randint(0, height)
+    r1 = random.randint(0, width/tileSize)
+    r2 = random.randint(0, height/tileSize)
+    r3 = random.randint(0, width/tileSize)
+    r4 = random.randint(0, height/tileSize)
     mapa = Terreno()
     flow = flowField(tileSize)
     v = Vehicle(r1, r2)
@@ -34,12 +34,13 @@ def draw():
     mapa.drawTerrain()
     if keyPressed:
         if key == '1':
-            path = BFS(mapa[v.location()[0]][v.location()[1]].vizinhos, mapa[v.location()[0]][v.location()[1]], f.location()) 
+            path = BFS(mapa[v.location()[0]][v.location()[1]].getVizinhos(), mapa[v.location()[0]][v.location()[1]].getItens(), f.location())
+            print(path)
+            #v.follow(flow, )
     
     if(round(v.location()[0]) == round(f.location()[0]) and round(v.location()[1]) == round(f.location()[1])):
-        r1 = random.randint(0, width)
-        r2 = random.randint(0, height)
-        loc = PVector(r1,r2)
+        r1 = random.randint(0, width/tileSize)
+        r2 = random.randint(0, height/tileSize)
         f.update(r1, r2)
         f.comeu()
 

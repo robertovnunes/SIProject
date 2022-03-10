@@ -33,7 +33,7 @@ class Vehicle():
     # STEER = DESIRED MINUS VELOCITY
     
     def location(self):
-        return self.position
+        return (self.position.x, self.position.y)
     
     
     def arrive(self, target):

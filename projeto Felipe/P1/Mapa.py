@@ -73,7 +73,7 @@ class Terreno():
                     vzns = self.Vizinhos((i, j))
                     BLcell = Celula(x, y, 3, vzns)
                     self.mapa[i][j].append(BLcell.getValues())
-                    self.walls.append(BLcell.getX(), BLcell.getY())
+                    self.walls.append((BLcell.getX(), BLcell.getY()))
     
     def getColor (self, x, y):
         v = noise(x * scl, y * scl)

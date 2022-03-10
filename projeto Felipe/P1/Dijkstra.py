@@ -1,4 +1,4 @@
-frontier = PriorityQueue()
+'''frontier = PriorityQueue()
 frontier.put(start, 0)
 came_from = dict()
 cost_so_far = dict()
@@ -17,4 +17,4 @@ while not frontier.empty():
          cost_so_far[next] = new_cost
          priority = new_cost
          frontier.put(next, priority)
-         came_from[next] = current
+         came_from[next] = current'''
