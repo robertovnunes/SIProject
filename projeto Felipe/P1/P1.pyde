@@ -32,16 +32,17 @@ def setup():
 def draw():
     #background(200)
     mapa.drawTerrain()
-    if keyPressed:
-        if key == '1':
-            path = BFS(mapa[v.location()[0]][v.location()[1]].getVizinhos(), mapa[v.location()[0]][v.location()[1]].getItens(), f.location())
-            print(path)
-            #v.follow(flow, )
+#    if keyPressed:
+#        if key == '1':
+#            path = BFS(mapa[v.location()[0]][v.location()[1]].getVizinhos(), mapa[v.location()[0]][v.location()[1]].getItens(), f.location())
+#            print(path)
+#            #v.follow(flow, )
     
     if(round(v.location()[0]) == round(f.location()[0]) and round(v.location()[1]) == round(f.location()[1])):
         r1 = random.randint(0, width/tileSize)
         r2 = random.randint(0, height/tileSize)
-        f.update(r1, r2)
+#        print(mapa.mapa[r1][r2].getX(), mapa.mapa[r1][r2].getY())
+        f.update(r1,r2)
         f.comeu()
 
     v.arrive(f.location())

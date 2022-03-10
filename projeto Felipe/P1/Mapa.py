@@ -31,6 +31,10 @@ class Terreno():
             self.mapa.append([])
             for j in range (height/tileSize):
                 self.mapa[i].append([])    
+                
+    def getCoord(x, y):
+        print(x, y)
+        return [x*20+10, y*20+10]
 
 
     def Vizinhos(self, tupla):

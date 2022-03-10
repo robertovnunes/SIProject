@@ -1,10 +1,11 @@
 # The "Food" class
+tileSize = 20;
 
 class Food():
 
     def __init__(self, x, y):
         self.acceleration = PVector(0, 0)
-        self.posicao = PVector(x, y)
+        self.posicao = PVector(x*tileSize+10, y*tileSize+10)
         self.r = 20
         self.maxspeed = 1.0
         self.maxforce = 0.01
@@ -17,7 +18,7 @@ class Food():
         #self.velocity.add(self.acceleration)
         # Limit speed
         #self.velocity.limit(self.maxspeed)
-        self.posicao = PVector(x, y)
+        self.posicao = PVector(x*tileSize+10, y*tileSize+10)
         # Reset accelerationelertion to 0 each cycle
         #self.acceleration.mult(0)
 
@@ -46,7 +47,7 @@ class Food():
         with pushMatrix():
             translate(self.posicao.x, self.posicao.y)
             #rotate(theta)
-            rect(0, 0, self.r, self.r)
+            rect(-10, -10, self.r, self.r)
             # beginShape()
             # vertex(0, -self.r * 2)
             # vertex(-self.r, self.r * 2)
